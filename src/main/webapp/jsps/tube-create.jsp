@@ -9,7 +9,7 @@
     <main class="jumbotron">
         <div class="row">
             <div class="col col-md-12 d-flex justify-content-center">
-                <h1>{{tittle}}</h1>
+                <h1>Create Tube</h1>
             </div>
         </div>
         <hr/>

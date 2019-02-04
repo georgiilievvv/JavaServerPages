@@ -6,6 +6,8 @@ import myTybe.repository.TubeRepository;
 import org.modelmapper.ModelMapper;
 
 import javax.inject.Inject;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class TubeServiceImpl implements TubeService{
 
@@ -26,7 +28,15 @@ public class TubeServiceImpl implements TubeService{
 
     @Override
     public TubeServiceModel findByName(String name) {
-        return this.modelMapper
-                .map(this.tubeRepository.findByName(name), TubeServiceModel.class);
+        Tube tube = this.tubeRepository.findByName(name).orElse(null);
+
+        return this.modelMapper.map(tube, TubeServiceModel.class);
+    }
+
+    @Override
+    public List<TubeServiceModel> findAll() {
+        return this.tubeRepository.allEntities().stream().map(e ->
+                this.modelMapper.map(e, TubeServiceModel.class))
+                .collect(Collectors.toList());
     }
 }

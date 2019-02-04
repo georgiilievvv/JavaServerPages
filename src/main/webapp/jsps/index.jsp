@@ -21,10 +21,10 @@
         <hr/>
         <div class="row">
             <div class="col col-md-6 d-flex justify-content-center">
-                <a href="/tubes/create" class="btn btn-primary"> Create Tube</a>
+                <a href="/tubes/create" class="btn btn-primary">Create Tube</a>
             </div>
             <div class="col col-md-6 d-flex justify-content-center">
-                <a href="/tubes/all" class="btn btn-primary"> Create Tube</a>
+                <a href="/tubes/all" class="btn btn-primary">All Tubes</a>
             </div>
         </div>
     </main>

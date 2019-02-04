@@ -4,6 +4,7 @@ import myTybe.domain.entities.Tube;
 
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.Persistence;
 import java.util.List;
 import java.util.Optional;
@@ -21,16 +22,21 @@ public class TubeRepositoryImpl implements TubeRepository {
 
     @Override
     public Optional<Tube> findByName(String name) {
+        try {
 
-        Optional<Tube> entity = Optional.ofNullable(this.entityManager
-                .createQuery("" +
-                        "SELECT t " +
-                        "FROM tubes t " +
-                        "WHERE t.name = :name", Tube.class)
-                .setParameter("name", name)
-                .getSingleResult());
+            Optional<Tube> entity = Optional.ofNullable(this.entityManager
+                    .createQuery("" +
+                            "SELECT t " +
+                            "FROM tubes t " +
+                            "WHERE t.name = :name", Tube.class)
+                    .setParameter("name", name)
+                    .getSingleResult());
 
-        return entity;
+            return entity;
+        }catch (NoResultException nre){
+
+            return Optional.empty();
+        }
     }
 
     @Override
