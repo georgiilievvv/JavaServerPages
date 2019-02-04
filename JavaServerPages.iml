@@ -6,7 +6,7 @@
         <setting name="validation-enabled" value="true" />
         <setting name="provider-name" value="" />
         <datasource-mapping>
-          <factory-entry name="metube" />
+          <factory-entry name="metube" value="a4b629d5-e86a-45ac-a91b-2437a5e83e31" />
         </datasource-mapping>
         <deploymentDescriptor name="persistence.xml" url="file://$MODULE_DIR$/src/main/resources/META-INF/persistance.xml" />
       </configuration>
