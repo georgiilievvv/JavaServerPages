@@ -1,5 +1,9 @@
 package myTybe.domain.models.binding;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
+
 public class TubeCreateBindingModel {
     private String Name;
     private String Description;
@@ -9,6 +13,7 @@ public class TubeCreateBindingModel {
     public TubeCreateBindingModel() {
     }
 
+    @NotNull
     public String getName() {
         return Name;
     }
@@ -17,6 +22,7 @@ public class TubeCreateBindingModel {
         Name = name;
     }
 
+    @NotNull
     public String getDescription() {
         return Description;
     }
@@ -25,14 +31,18 @@ public class TubeCreateBindingModel {
         Description = description;
     }
 
+    @Pattern(regexp = "https:\\/\\/www\\.youtube\\.com\\/watch.+")
     public String getYouTubeLink() {
         return YouTubeLink;
     }
 
     public void setYouTubeLink(String youTubeLink) {
+
         YouTubeLink = youTubeLink;
     }
 
+    @NotNull
+    @Size(min = 2)
     public String getUploader() {
         return Uploader;
     }

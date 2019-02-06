@@ -1,5 +1,9 @@
 package myTybe.domain.models.server;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
+
 public class TubeServiceModel {
 
     private String id;
@@ -19,6 +23,7 @@ public class TubeServiceModel {
         this.id = id;
     }
 
+    @NotNull
     public String getName() {
         return Name;
     }
@@ -27,6 +32,7 @@ public class TubeServiceModel {
         Name = name;
     }
 
+    @NotNull
     public String getDescription() {
         return Description;
     }
@@ -35,14 +41,18 @@ public class TubeServiceModel {
         Description = description;
     }
 
+    @Pattern(regexp = "https:\\/\\/www\\.youtube\\.com\\/watch.+")
     public String getYouTubeLink() {
         return YouTubeLink;
     }
 
     public void setYouTubeLink(String youTubeLink) {
+
         YouTubeLink = youTubeLink;
     }
 
+    @NotNull
+    @Size(min = 2)
     public String getUploader() {
         return Uploader;
     }

@@ -3,6 +3,7 @@ package myTybe.service;
 import myTybe.domain.entities.Tube;
 import myTybe.domain.models.server.TubeServiceModel;
 import myTybe.repository.TubeRepository;
+import myTybe.util.ValidatorUtil;
 import org.modelmapper.ModelMapper;
 
 import javax.inject.Inject;
@@ -11,17 +12,23 @@ import java.util.stream.Collectors;
 
 public class TubeServiceImpl implements TubeService{
 
+    private final ValidatorUtil validator;
     private final TubeRepository tubeRepository;
     private final ModelMapper modelMapper;
 
     @Inject
-    public TubeServiceImpl(TubeRepository tubeRepository, ModelMapper modelMapper) {
+    public TubeServiceImpl(ValidatorUtil validator, TubeRepository tubeRepository, ModelMapper modelMapper) {
+        this.validator = validator;
         this.tubeRepository = tubeRepository;
         this.modelMapper = modelMapper;
     }
 
     @Override
     public void saveTube(TubeServiceModel tubeServiceModel) {
+
+        if (!this.validator.isValid(tubeServiceModel)){
+             throw new IllegalArgumentException();
+        }else
 
         this.tubeRepository.save(this.modelMapper.map(tubeServiceModel, Tube.class));
     }

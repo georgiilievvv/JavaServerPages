@@ -38,7 +38,7 @@
         </div>
         <hr/>
         <div class="col col-md-12 d-flex justify-content-center">
-            <a href="home">Back to Home.</a>
+            <a href="/home">Back to Home.</a>
         </div>
     </main>
     <footer>
